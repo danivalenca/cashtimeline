@@ -141,9 +141,9 @@
                     <div class="row g-0 flex-nowrap h-100">
 
                         <!-- Accounts -->
-                        <div class="col-lg-3 bg-light h-100">
+                        <div class="col-lg-2 h-100">
 
-                            <div class="border-end border-light-subtle p-4 d-flex flex-column h-100">
+                            <div class="p-4 d-flex flex-column h-100">
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Accounts</h2>
@@ -212,9 +212,9 @@
                         <!-- Accounts -->
 
                         <!-- Feb 2026 -->
-                        <div class="col-lg-3 h-100">
+                        <div class="col-lg-2 h-100">
 
-                            <div class="border-end border-light-subtle p-4 d-flex flex-column h-100">
+                            <div class="border-start border-light-subtle p-4 d-flex flex-column h-100">
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Feb 2026</h2>
@@ -265,9 +265,9 @@
                         <!-- Feb 2026 -->
 
                         <!-- Mar 2026 -->
-                        <div class="col-lg-3 h-100">
+                        <div class="col-lg-2 h-100">
 
-                            <div class="border-end border-light-subtle p-4 d-flex flex-column h-100">
+                            <div class="border-start border-light-subtle p-4 d-flex flex-column h-100">
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Mar 2026</h2>
@@ -318,9 +318,9 @@
                         <!-- Mar 2026 -->
 
                         <!-- Apr 2026 -->
-                        <div class="col-lg-3 h-100">
+                        <div class="col-lg-2 h-100">
 
-                            <div class="border-end border-light-subtle p-4 d-flex flex-column h-100">
+                            <div class="border-start border-light-subtle p-4 d-flex flex-column h-100">
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Apr 2026</h2>
@@ -369,6 +369,112 @@
 
                         </div>
                         <!-- Apr 2026 -->
+
+                        <!-- May 2026 -->
+                        <div class="col-lg-2 h-100">
+
+                            <div class="border-start border-light-subtle p-4 d-flex flex-column h-100">
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h2 class="fs-5 fw-semibold">May 2026</h2>
+                                    <button class="btn btn-xs btn-outline-primary">
+                                        <i class="fa-solid fa-plus small"></i>
+                                    </button>
+                                </div>
+
+                                <div class="flex-grow-1">
+
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p>Rent</p>
+                                        <p>
+                                            <a href="#" class="link-danger text-decoration-none">
+                                                -CAD $2,400.00
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p>Amex Credit Card</p>
+                                        <p>
+                                            <a href="#" class="link-danger text-decoration-none">
+                                                -CAD $1,974.90
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p>Rafa EI</p>
+                                        <p>
+                                            <a href="#" class="link-success text-decoration-none">
+                                                CAD $1,232.00
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="fw-semibold">End Balance</p>
+                                    <p class="fw-semibold text-success">CAD $253,000</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- May 2026 -->
+
+                        <!-- Jun 2026 -->
+                        <div class="col-lg-2 h-100">
+
+                            <div class="border-start border-light-subtle p-4 d-flex flex-column h-100">
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h2 class="fs-5 fw-semibold">Jun 2026</h2>
+                                    <button class="btn btn-xs btn-outline-primary">
+                                        <i class="fa-solid fa-plus small"></i>
+                                    </button>
+                                </div>
+
+                                <div class="flex-grow-1">
+
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p>Rent</p>
+                                        <p>
+                                            <a href="#" class="link-danger text-decoration-none">
+                                                -CAD $2,400.00
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p>Amex Credit Card</p>
+                                        <p>
+                                            <a href="#" class="link-danger text-decoration-none">
+                                                -CAD $1,974.90
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p>Rafa EI</p>
+                                        <p>
+                                            <a href="#" class="link-success text-decoration-none">
+                                                CAD $1,232.00
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="fw-semibold">End Balance</p>
+                                    <p class="fw-semibold text-success">CAD $253,000</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- Jun 2026 -->
 
                     </div>
                     <!-- Row -->
