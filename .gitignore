@@ -13,6 +13,7 @@ composer.phar
 Thumbs.db
 .idea/
 .vscode/
+!.vscode/sftp.json.example
 
 # PHP cache and temporary files
 *.cache

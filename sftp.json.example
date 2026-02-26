@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Hostinger - Root Files",
+        "host": "your-server.hostinger.com",
+        "protocol": "sftp",
+        "port": 22,
+        "username": "u123456789",
+        "password": "your-sftp-password",
+        "remotePath": "/home/u123456789/cashtimeline",
+        "uploadOnSave": false,
+        "useTempFile": false,
+        "openSsh": false,
+        "ignore": [
+            ".vscode",
+            ".git",
+            ".DS_Store",
+            "node_modules",
+            "vendor",
+            ".env",
+            ".env.local",
+            ".env.production",
+            "public"
+        ],
+        "watcher": {
+            "files": "**/*",
+            "autoUpload": false,
+            "autoDelete": false
+        }
+    },
+    {
+        "name": "Hostinger - Public (public_html)",
+        "host": "your-server.hostinger.com",
+        "protocol": "sftp",
+        "port": 22,
+        "username": "u123456789",
+        "password": "your-sftp-password",
+        "remotePath": "/home/u123456789/public_html",
+        "context": "public",
+        "uploadOnSave": false,
+        "useTempFile": false,
+        "openSsh": false,
+        "ignore": [
+            ".DS_Store"
+        ],
+        "watcher": {
+            "files": "public/**/*",
+            "autoUpload": false,
+            "autoDelete": false
+        }
+    }
+]

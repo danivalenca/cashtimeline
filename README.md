@@ -133,6 +133,8 @@ cashtimeline/
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed production deployment instructions.
 
+**Deploying to Hostinger?** See [HOSTINGER-DEPLOYMENT.md](HOSTINGER-DEPLOYMENT.md) for a complete step-by-step guide.
+
 ### Quick Production Setup
 
 1. Clone repository on production server
@@ -142,6 +144,14 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed production deployment instructio
 5. Set `APP_ENV=production` in `.env`
 6. Secure: `chmod 600 .env`
 7. Point web server to `public/` directory
+
+### SFTP Deployment
+
+If using SFTP (via Hostinger or other hosting):
+
+1. Copy `sftp.json.example` to `.vscode/sftp.json`
+2. Update with your FTP credentials
+3. Use VS Code SFTP extension to upload files
 
 ## 🛠️ Development
 
