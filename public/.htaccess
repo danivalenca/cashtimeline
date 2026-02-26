@@ -1,0 +1,10 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /cashtimeline/public/
+
+# Skip real files (assets, images, etc.) and real directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Map extension-less URLs to their .php counterpart
+RewriteRule ^([^/]+)/?$ $1.php [L,QSA]

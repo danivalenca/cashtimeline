@@ -1,0 +1,38 @@
+{
+  "name": "CashTimeline",
+  "short_name": "CashTimeline",
+  "description": "Personal finance tracker — timelines, accounts, recurring transactions.",
+  "start_url": "/cashtimeline/public/dashboard.php",
+  "scope": "/cashtimeline/public/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f1117",
+  "theme_color": "#6366f1",
+  "categories": ["finance", "productivity"],
+  "icons": [
+    {
+      "src": "/cashtimeline/public/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/cashtimeline/public/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add Transaction",
+      "short_name": "Add Txn",
+      "url": "/cashtimeline/public/dashboard.php?shortcut=add_txn",
+      "description": "Open dashboard and add a new transaction"
+    },
+    {
+      "name": "Accounts",
+      "url": "/cashtimeline/public/accounts.php"
+    }
+  ]
+}

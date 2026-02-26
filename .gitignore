@@ -1,0 +1,36 @@
+# Environment — never commit real credentials
+.env
+.env.local
+.env.production
+
+# Composer dependencies — regenerate with 'composer install'
+vendor/
+composer.phar
+
+# XAMPP / editor junk
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# PHP cache and temporary files
+*.cache
+.phpunit.result.cache
+.php_cs.cache
+
+# Session files (if stored locally)
+sessions/
+
+# Uploads
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Node modules (if you add any frontend build tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
