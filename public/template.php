@@ -33,7 +33,7 @@
 
 </head>
 
-<body class="bg-light">
+<body class="bg-light-subtle">
 
     <!-- Wrapper -->
     <div class="d-flex">
@@ -44,7 +44,7 @@
             <!-- Logo -->
             <div class="p-4 pb-0">
 
-                <img src="https://placehold.co/38x38" alt="User Avatar" class="rounded">
+                <img src="https://placehold.co/38x38" alt="User Avatar" class="rounded" style="width: 38px; height: 38px;">
 
             </div>
             <!-- Logo -->
@@ -61,7 +61,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <i class="fa-solid fa-user small me-1"></i>
+                            <i class="fa-solid fa-circle-user small me-1"></i>
                             Accounts
                         </a>
                     </li>
@@ -117,13 +117,30 @@
                 <!-- Header -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
 
-                    <div class="d-flex gap-3">
+                    <div class="d-flex align-items-center gap-3">
 
                         <h1 class="fs-4 fw-semibold">Timeline</h1>
 
                     </div>
 
-                    <div class="d-flex gap-3">
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="d-flex align-items-center gap-3">
+                            <button class="btn btn-outline-primary">
+                                <i class="fa-solid fa-angle-left small"></i>
+                            </button>
+                            <p>
+                                Feb 2026 - Jul 2026
+                            </p>
+                            <button class="btn btn-outline-primary">
+                                <i class="fa-solid fa-angle-right small"></i>
+                            </button>
+                        </div>
+
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary active" aria-current="page">Timeline</a>
+                            <a href="#" class="btn btn-primary">Calendar</a>
+                        </div>
 
                         <button class="btn btn-primary">
                             Add
@@ -147,7 +164,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Accounts</h2>
-                                    <button class="btn btn-xs btn-outline-primary">
+                                    <button class="btn btn-xs btn-primary">
                                         <i class="fa-solid fa-plus small"></i>
                                     </button>
                                 </div>
@@ -201,9 +218,9 @@
 
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="fw-semibold">Net Worth</p>
-                                    <p class="fw-semibold text-success">CAD $232,000</p>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <p>Net Worth</p>
+                                    <p class="fs-5 fw-semibold text-success">CAD $253,000</p>
                                 </div>
 
                             </div>
@@ -218,7 +235,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Feb 2026</h2>
-                                    <button class="btn btn-xs btn-outline-primary">
+                                    <button class="btn btn-xs btn-primary disabled opacity-0">
                                         <i class="fa-solid fa-plus small"></i>
                                     </button>
                                 </div>
@@ -254,9 +271,9 @@
 
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="fw-semibold">End Balance</p>
-                                    <p class="fw-semibold text-success">CAD $253,000</p>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <p>End Balance</p>
+                                    <p class="fs-5 fw-semibold text-success">CAD $253,000</p>
                                 </div>
 
                             </div>
@@ -271,7 +288,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Mar 2026</h2>
-                                    <button class="btn btn-xs btn-outline-primary">
+                                    <button class="btn btn-xs btn-primary disabled opacity-0">
                                         <i class="fa-solid fa-plus small"></i>
                                     </button>
                                 </div>
@@ -307,9 +324,9 @@
 
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="fw-semibold">End Balance</p>
-                                    <p class="fw-semibold text-success">CAD $253,000</p>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <p>End Balance</p>
+                                    <p class="fs-5 fw-semibold text-success">CAD $253,000</p>
                                 </div>
 
                             </div>
@@ -324,7 +341,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Apr 2026</h2>
-                                    <button class="btn btn-xs btn-outline-primary">
+                                    <button class="btn btn-xs btn-primary disabled opacity-0">
                                         <i class="fa-solid fa-plus small"></i>
                                     </button>
                                 </div>
@@ -360,9 +377,9 @@
 
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="fw-semibold">End Balance</p>
-                                    <p class="fw-semibold text-success">CAD $253,000</p>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <p>End Balance</p>
+                                    <p class="fs-5 fw-semibold text-success">CAD $253,000</p>
                                 </div>
 
                             </div>
@@ -377,7 +394,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">May 2026</h2>
-                                    <button class="btn btn-xs btn-outline-primary">
+                                    <button class="btn btn-xs btn-primary disabled opacity-0">
                                         <i class="fa-solid fa-plus small"></i>
                                     </button>
                                 </div>
@@ -413,9 +430,9 @@
 
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="fw-semibold">End Balance</p>
-                                    <p class="fw-semibold text-success">CAD $253,000</p>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <p>End Balance</p>
+                                    <p class="fs-5 fw-semibold text-success">CAD $253,000</p>
                                 </div>
 
                             </div>
@@ -430,7 +447,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h2 class="fs-5 fw-semibold">Jun 2026</h2>
-                                    <button class="btn btn-xs btn-outline-primary">
+                                    <button class="btn btn-xs btn-primary disabled opacity-0">
                                         <i class="fa-solid fa-plus small"></i>
                                     </button>
                                 </div>
@@ -466,9 +483,9 @@
 
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="fw-semibold">End Balance</p>
-                                    <p class="fw-semibold text-success">CAD $253,000</p>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <p>End Balance</p>
+                                    <p class="fs-5 fw-semibold text-success">CAD $253,000</p>
                                 </div>
 
                             </div>
