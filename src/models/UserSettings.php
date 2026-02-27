@@ -60,30 +60,4 @@ class UserSettings {
         return $stmt->execute([$userId, $key]);
     }
 
-    // Get notification preferences with defaults
-    public function getNotificationPreferences(int $userId): array {
-        return [
-            'enabled' => $this->get($userId, 'notifications_enabled', true),
-            'email_enabled' => $this->get($userId, 'notifications_email', false),
-            'sms_enabled' => $this->get($userId, 'notifications_sms', false),
-            'in_app_enabled' => $this->get($userId, 'notifications_in_app', true),
-            'transaction_due' => $this->get($userId, 'notify_transaction_due', true),
-            'recurring_due' => $this->get($userId, 'notify_recurring_due', true),
-            'low_balance' => $this->get($userId, 'notify_low_balance', true),
-            'days_before' => $this->get($userId, 'notify_days_before', 1),
-            'quiet_hours_start' => $this->get($userId, 'quiet_hours_start', '22:00'),
-            'quiet_hours_end' => $this->get($userId, 'quiet_hours_end', '08:00'),
-        ];
-    }
-
-    public function saveNotificationPreferences(int $userId, array $prefs): bool {
-        $success = true;
-        foreach ($prefs as $key => $value) {
-            $prefKey = strpos($key, 'notify_') === 0 || strpos($key, 'notifications_') === 0 || strpos($key, 'quiet_') === 0
-                ? $key 
-                : 'notify_' . $key;
-            $success = $this->set($userId, $prefKey, $value) && $success;
-        }
-        return $success;
-    }
 }

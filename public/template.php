@@ -8,27 +8,42 @@
     <title>Template</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <!-- Google Fonts (Titillium Web) -->
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-    body {
-        font-family: 'Titillium Web', sans-serif;
-    }
+        body {
+            font-family: 'Titillium Web', sans-serif;
+        }
 
-    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p {
-        margin-bottom: 0;
-    }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6,
+        p {
+            margin-bottom: 0;
+        }
 
-    .btn-xs {
-        padding: 0.2rem 0.4rem;
-        font-size: 0.7rem;
-    }
+        .btn-xs {
+            padding: 0.2rem 0.4rem;
+            font-size: 0.7rem;
+        }
     </style>
 
 </head>
@@ -44,7 +59,8 @@
             <!-- Logo -->
             <div class="p-4 pb-0">
 
-                <img src="https://placehold.co/38x38" alt="User Avatar" class="rounded" style="width: 38px; height: 38px;">
+                <img src="https://placehold.co/38x38" alt="User Avatar" class="rounded"
+                    style="width: 38px; height: 38px;">
 
             </div>
             <!-- Logo -->
@@ -79,14 +95,20 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
+                            <i class="fa-solid fa-bullseye small me-1"></i>
+                            Goals
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
                             <i class="fa-solid fa-cog small me-1"></i>
                             Settings
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <i class="fa-solid fa-bell small me-1"></i>
-                            Notifications
+                            <i class="fa-solid fa-right-from-bracket small me-1"></i>
+                            Sign out
                         </a>
                     </li>
                 </ul>
@@ -130,7 +152,7 @@
                                 <i class="fa-solid fa-angle-left small"></i>
                             </button>
                             <p>
-                                Feb 2026 - Jul 2026
+                                Feb 2026 - Jan 2027
                             </p>
                             <button class="btn btn-outline-primary">
                                 <i class="fa-solid fa-angle-right small"></i>
@@ -142,7 +164,7 @@
                             <a href="#" class="btn btn-primary">Calendar</a>
                         </div>
 
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#createTransaction">
                             Add
                         </button>
 
@@ -508,8 +530,71 @@
     </div>
     <!-- Wrapper -->
 
+    <!-- Offcanvas: Create Transaction -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="createTransaction" aria-labelledby="createTransactionLabel">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center border-bottom border-light-subtle p-4">
+
+            <h2 class="fs-5 fw-semibold">Add Transaction</h2>
+            <button class="btn btn-xs btn-primary" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="fa-solid fa-xmark small"></i>
+            </button>
+
+        </div>
+        <!-- Header -->
+
+        <!-- Content -->
+        <div class="p-4 flex-grow-1">
+
+            <input type="hidden" name="action" id="txnAction" value="create">
+            <input type="hidden" name="id" id="txnId" value="">
+            <input type="hidden" name="redirect"  value="<?= htmlspecialchars($_SERVER['REQUEST_URI'] ?? '/cashtimeline/public/dashboard') ?>">
+
+            <div class="mb-3">
+                <label for="type" class="form-label">
+                    <span class="text-danger">*</span> Type
+                </label>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="type" id="type1" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="type1">Income</label>
+
+                    <input type="radio" class="btn-check" name="type" id="type2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="type2">Expense</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="transaction_date" class="form-label">
+                    <span class="text-danger">*</span> Date
+                </label>
+                <input type="date" name="transaction_date" id="transaction_date" class="form-control" value="<?= date('Y-m-d') ?>" required>
+            </div>
+
+        </div>
+        <!-- Content -->
+
+        <!-- Buttons -->
+        <div class="d-flex gap-3 border-top border-light-subtle p-4">
+
+            <button class="btn btn-secondary" data-bs-dismiss="offcanvas" aria-label="Close">
+                Cancel
+            </button>
+
+            <button class="btn btn-primary w-100">
+                Submit
+            </button>
+
+        </div>
+        <!-- Buttons -->
+
+    </div>
+    <!-- Offcanvas: Create Transaction -->
+
     <!-- Bootstrap JS Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 
 </body>
 

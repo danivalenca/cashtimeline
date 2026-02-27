@@ -5,20 +5,11 @@ $activePage = $activePage ?? '';
 $userName   = $_SESSION['user_name'] ?? 'User';
 $initials   = strtoupper(substr($userName, 0, 1));
 
-// Get notification count
-$unreadCount = 0;
-if (isset($_SESSION['user_id'])) {
-    require_once __DIR__ . '/../../src/controllers/NotificationController.php';
-    $notificationController = new NotificationController();
-    $unreadCount = $notificationController->getUnreadCount($_SESSION['user_id']);
-}
-
 $navItems = [
     ['href' => '/cashtimeline/public/dashboard',     'icon' => 'fa-chart-gantt',    'label' => 'Timeline',    'key' => 'dashboard'],
     ['href' => '/cashtimeline/public/accounts',      'icon' => 'fa-building-columns','label' => 'Accounts',   'key' => 'accounts'],
     ['href' => '/cashtimeline/public/transactions',  'icon' => 'fa-arrow-right-arrow-left', 'label' => 'Transactions', 'key' => 'transactions'],
     ['href' => '/cashtimeline/public/recurring',     'icon' => 'fa-rotate',          'label' => 'Recurring',   'key' => 'recurring'],
-    ['href' => '/cashtimeline/public/notifications', 'icon' => 'fa-bell',           'label' => 'Notifications', 'key' => 'notifications', 'badge' => $unreadCount],
 ];
 
 $settingsItems = [
