@@ -1,33 +1,24 @@
--- CashTimeline - Installation SQL
--- Run this script once to set up the database for a fresh install.
+-- CashTimeline Database Schema
+-- Updated: March 2, 2026
+-- Server: MariaDB/MySQL
+-- Character Set: UTF-8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
--- --------------------------------------------------------
--- Create database
--- --------------------------------------------------------
-
-CREATE DATABASE IF NOT EXISTS `cashtimeline`
-  DEFAULT CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-
+-- Create database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS `cashtimeline` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `cashtimeline`;
 
 -- --------------------------------------------------------
--- Table: users
+-- Table structure for table `users`
 -- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `email` varchar(150) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
   `password_hash` varchar(255) NOT NULL,
   `default_currency` varchar(3) NOT NULL DEFAULT 'CAD',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -36,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
--- Table: accounts
+-- Table structure for table `accounts`
 -- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `accounts` (
@@ -56,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
--- Table: transactions
+-- Table structure for table `transactions`
 -- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `transactions` (
@@ -67,16 +58,18 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `amount` decimal(15,2) NOT NULL,
   `description` varchar(255) NOT NULL,
   `transaction_date` date NOT NULL,
+  `processed` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `account_id` (`account_id`),
+  KEY `idx_processed` (`processed`),
   CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
--- Table: recurring_rules
+-- Table structure for table `recurring_rules`
 -- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `recurring_rules` (
@@ -97,24 +90,3 @@ CREATE TABLE IF NOT EXISTS `recurring_rules` (
   CONSTRAINT `recurring_rules_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   CONSTRAINT `recurring_rules_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
--- Table: user_settings
--- --------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `user_settings` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `setting_key` varchar(100) NOT NULL,
-  `setting_value` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `user_setting` (`user_id`, `setting_key`),
-  CONSTRAINT `user_settings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
