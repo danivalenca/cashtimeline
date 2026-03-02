@@ -99,7 +99,7 @@ class Account {
                 SUM(CASE WHEN type='income'  THEN amount ELSE 0 END) AS total_in,
                 SUM(CASE WHEN type='expense' THEN amount ELSE 0 END) AS total_out
              FROM transactions
-             WHERE account_id = ? AND user_id = ? AND transaction_date <= ? AND processed = 0"
+             WHERE account_id = ? AND user_id = ? AND transaction_date <= ? AND processed = 1"
         );
         $stmt->execute([$id, $userId, $date]);
         $row = $stmt->fetch();
