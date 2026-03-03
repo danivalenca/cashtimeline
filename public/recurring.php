@@ -177,7 +177,6 @@ function openRecurringEdit(id) {
             document.getElementById('recurringDayOfMonth').value   = rule.day_of_month || '';
             document.getElementById('recurringStartDate').value    = rule.start_date;
             document.getElementById('recurringEndDate').value      = rule.end_date || '';
-            document.getElementById('recurringNotifyBefore').value = rule.notify_before_days || '0';
             document.getElementById(rule.type === 'income' ? 'recTypeIncome' : 'recTypeExpense').checked = true;
             document.getElementById('recurringDeleteZone').classList.remove('d-none');
             document.getElementById('recurringDeleteId').value     = rule.id;

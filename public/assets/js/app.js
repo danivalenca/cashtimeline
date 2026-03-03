@@ -88,6 +88,7 @@ function duplicateTxn() {
         document.getElementById('txnAccount').value      = account;
         document.getElementById('txnDescription').value  = desc;
         document.getElementById('txnAmount').value       = amount;
+        document.getElementById('txnProcessed').checked  = false;
         document.querySelectorAll('input[name=type]').forEach(r => r.checked = r.value === type);
         document.getElementById('txnDeleteZone').classList.add('d-none');
         new bootstrap.Offcanvas(document.getElementById('txnOffcanvas')).show();

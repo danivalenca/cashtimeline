@@ -49,7 +49,7 @@ $categories = $categories ?? [];
                        placeholder="e.g. Monthly rent" required>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-3">
                 <label class="form-label-sm">Amount</label>
                 <div class="d-flex align-items-center gap-2">
                     <span style="font-size:13px;color:var(--text-muted);flex-shrink:0;">CA$</span>
@@ -58,17 +58,17 @@ $categories = $categories ?? [];
                 </div>
             </div>
 
-            <!-- Notification Toggle -->
+            <!-- Processed Checkbox -->
             <div class="mb-4">
-                <div class="form-check form-switch" style="padding-left:0;">
+                <div class="form-check" style="padding-left:0;">
                     <label class="form-check-label d-flex align-items-center gap-2" style="cursor:pointer;">
-                        <input type="checkbox" name="notify_on_date" id="txnNotify" 
+                        <input type="checkbox" name="processed" id="txnProcessed" 
                                class="form-check-input" value="1" style="cursor:pointer;margin:0;">
                         <div>
-                            <i class="fa-solid fa-bell" style="color:var(--accent);font-size:13px;margin-right:4px;"></i>
-                            <span style="font-size:13px;font-weight:500;">Notify me about this transaction</span>
+                            <i class="fa-solid fa-check-circle" style="color:#22c55e;font-size:13px;margin-right:4px;"></i>
+                            <span style="font-size:13px;font-weight:500;">Mark as processed</span>
                             <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">
-                                You'll be notified based on your settings preferences
+                                Processed transactions won't affect future balance calculations
                             </div>
                         </div>
                     </label>
@@ -87,25 +87,9 @@ $categories = $categories ?? [];
         <div id="txnRecurringZone" class="d-none mt-3">
             <div class="divider"></div>
             
-            <!-- Process Recurring Button -->
-            <div class="process-info" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px;margin-bottom:12px;">
-                <div style="font-size:12px;color:#166534;margin-bottom:8px;">
-                    <i class="fa-solid fa-circle-check" style="color:#22c55e;"></i>
-                    <strong>Process & update balance?</strong>
-                </div>
-                <div style="font-size:11px;color:#166534;margin-bottom:10px;line-height:1.4;">
-                    This will record this occurrence, update your account balance, and mark it as processed (it will stay visible but won't affect future calculations).
-                </div>
-                <button type="button" class="btn btn-sm w-100" 
-                        style="background:#22c55e;color:white;border:none;margin-bottom:8px;"
-                        onclick="processRecurringOccurrence()">
-                    <i class="fa-solid fa-check-double me-1"></i> Process & Update Balance
-                </button>
-            </div>
-            
             <p style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">
                 <i class="fa-solid fa-rotate me-1" style="color:var(--accent);"></i>
-                Or just save to record <strong>this occurrence only</strong> without processing.
+                Save to record <strong>this occurrence only</strong>. Check "Mark as processed" above if this transaction has already been completed.
             </p>
             <a id="txnEditRuleLink" href="/cashtimeline/public/recurring"
                class="btn btn-sm btn-outline-secondary w-100">
@@ -116,27 +100,6 @@ $categories = $categories ?? [];
         <!-- Duplicate + Delete zone (edit mode only) -->
         <div id="txnDeleteZone" class="d-none mt-3">
             <div class="divider"></div>
-            
-            <!-- Process Transaction -->
-            <div class="process-info" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px;margin-bottom:12px;">
-                <div style="font-size:12px;color:#166534;margin-bottom:8px;">
-                    <i class="fa-solid fa-circle-check" style="color:#22c55e;"></i>
-                    <strong>Process this transaction?</strong>
-                </div>
-                <div style="font-size:11px;color:#166534;margin-bottom:10px;line-height:1.4;">
-                    This will update the account's opening balance to reflect this transaction and mark it as processed (it will stay visible but won't affect future balance calculations).
-                </div>
-                <form method="POST" action="/cashtimeline/public/transactions" id="txnProcessForm">
-                    <input type="hidden" name="action" value="process">
-                    <input type="hidden" name="id" id="txnProcessId" value="">
-                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI'] ?? '/cashtimeline/public/dashboard') ?>">
-                    <button type="submit" class="btn btn-sm w-100" 
-                            style="background:#22c55e;color:white;border:none;"
-                            onclick="return confirm('Process this transaction and update account balance?')">
-                        <i class="fa-solid fa-check-double me-1"></i> Process & Update Balance
-                    </button>
-                </form>
-            </div>
             
             <!-- Duplicate -->
             <button type="button" class="btn btn-sm btn-outline-secondary w-100 mb-2" onclick="duplicateTxn()">

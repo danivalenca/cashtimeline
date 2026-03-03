@@ -103,6 +103,21 @@ class TransactionController {
                 $this->flash('Transaction processed and account balance updated.', 'success');
                 break;
 
+            case 'process_only':
+                // Process transaction: mark as processed WITHOUT updating account balance
+                $id = (int)($_POST['id'] ?? 0);
+                $txn = $this->model->find($id, $userId);
+                if (!$txn) {
+                    $this->flash('Transaction not found.', 'danger');
+                    break;
+                }
+                
+                // Just mark as processed
+                $this->model->markAsProcessed($id, $userId);
+                
+                $this->flash('Transaction marked as processed.', 'success');
+                break;
+
             case 'process_recurring':
                 // Process recurring occurrence: create transaction and mark as processed
                 $data = $this->extractData();
@@ -147,6 +162,21 @@ class TransactionController {
                 $this->flash('Recurring transaction processed and account balance updated.', 'success');
                 break;
 
+            case 'process_only_recurring':
+                // Process recurring occurrence: create transaction and mark as processed WITHOUT updating balance
+                $data = $this->extractData();
+                if (!$this->validate($data)) {
+                    $this->flash('Invalid transaction data.', 'danger');
+                    break;
+                }
+                
+                // Create the transaction and mark as processed
+                $txnId = $this->model->create($userId, $data);
+                $this->model->markAsProcessed($txnId, $userId);
+                
+                $this->flash('Recurring transaction marked as processed.', 'success');
+                break;
+
             default:
                 $this->flash('Unknown action.', 'danger');
         }
@@ -170,7 +200,7 @@ class TransactionController {
             'amount'           => abs((float)($_POST['amount'] ?? 0)),
             'description'      => trim($_POST['description'] ?? ''),
             'transaction_date' => $_POST['transaction_date'] ?? date('Y-m-d'),
-            'notify_on_date'   => isset($_POST['notify_on_date']) ? 1 : 0,
+            'processed'        => isset($_POST['processed']) ? 1 : 0,
         ];
     }
 

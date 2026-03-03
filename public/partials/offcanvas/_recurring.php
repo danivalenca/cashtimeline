@@ -78,21 +78,7 @@ $categories = $categories ?? [];
                 <input type="date" name="end_date" id="recurringEndDate" class="form-control-ct">
                 <small style="color:var(--text-muted);font-size:11px;">Leave blank for indefinite recurrence</small>
             </div>
-            <!-- Notification Settings -->
-            <div class="mb-4 pb-3" style="border-bottom:1px solid var(--border);">
-                <label class="form-label-sm">Notification Reminder</label>
-                <select name="notify_before_days" id="recurringNotifyBefore" class="form-select-ct">
-                    <option value="0">On the day</option>
-                    <option value="1" selected>1 day before</option>
-                    <option value="2">2 days before</option>
-                    <option value="3">3 days before</option>
-                    <option value="7">1 week before</option>
-                </select>
-                <small style="color:var(--text-muted);font-size:11px;display:block;margin-top:4px;">
-                    <i class="fa-solid fa-bell" style="color:var(--accent);font-size:10px;"></i>
-                    You'll be notified based on your settings preferences
-                </small>
-            </div>
+
             <div class="d-flex gap-2">
                 <button type="submit" class="btn-accent flex-grow-1 justify-content-center">
                     <i class="fa-solid fa-check me-1"></i> Save Rule

@@ -287,7 +287,9 @@ if ($nextM > 12) { $nextM = 1;  $nextY++; }
                                      <?php endif; ?>>
                                     <span class="txn-date"><?= $dayNum ?></span>
                                     <span class="txn-desc">
-                                        <?php if ($isRecurring): ?>
+                                        <?php if ($isProcessed): ?>
+                                            <i class="fa-solid fa-check" style="font-size:8px;color:#22c55e;margin-right:4px;flex-shrink:0;"></i>
+                                        <?php elseif ($isRecurring): ?>
                                             <span class="recurring-badge" title="Recurring"><i class="fa-solid fa-rotate" style="font-size:7px;"></i></span>
                                         <?php endif; ?>
                                         <?= htmlspecialchars($row['description']) ?>
@@ -418,6 +420,7 @@ function openTxnCreate() {
     document.getElementById('txnAction').value  = 'create';
     document.getElementById('txnId').value      = '';
     document.getElementById('txnDate').value    = '<?= date('Y-m-d') ?>';
+    document.getElementById('txnProcessed').checked = false;
     document.getElementById('txnDeleteZone').classList.add('d-none');
     new bootstrap.Offcanvas(document.getElementById('txnOffcanvas')).show();
 }
@@ -431,22 +434,16 @@ function openRecurringOccurrence(accountId, description, date, amount, type, rul
     document.getElementById('txnAccount').value      = accountId;
     document.getElementById('txnDescription').value  = description;
     document.getElementById('txnAmount').value       = amount;
+    document.getElementById('txnProcessed').checked  = false;
     document.querySelectorAll('input[name=type]').forEach(r => r.checked = r.value === type);
     document.getElementById('txnDeleteZone').classList.add('d-none');
     
-    // Show recurring zone with process button
+    // Show recurring zone with edit link
     const recZone = document.getElementById('txnRecurringZone');
     if (recZone) {
         recZone.classList.remove('d-none');
         document.getElementById('txnEditRuleLink').href =
             '/cashtimeline/public/recurring?edit=' + ruleId;
-        
-        // Store data for process button
-        recZone.dataset.accountId = accountId;
-        recZone.dataset.description = description;
-        recZone.dataset.date = date;
-        recZone.dataset.amount = amount;
-        recZone.dataset.type = type;
     }
     
     new bootstrap.Offcanvas(document.getElementById('txnOffcanvas')).show();
@@ -465,11 +462,10 @@ function openTxnEdit(id) {
             document.getElementById('txnAccount').value      = txn.account_id;
             document.getElementById('txnDescription').value  = txn.description;
             document.getElementById('txnAmount').value       = txn.amount;
-            document.getElementById('txnNotify').checked     = !!txn.notify_on_date;
+            document.getElementById('txnProcessed').checked  = !!txn.processed;
             document.querySelectorAll('input[name=type]').forEach(r => r.checked = r.value === txn.type);
             document.getElementById('txnDeleteZone').classList.remove('d-none');
             document.getElementById('txnDeleteId').value     = txn.id;
-            document.getElementById('txnProcessId').value    = txn.id;
             new bootstrap.Offcanvas(document.getElementById('txnOffcanvas')).show();
         });
 }
@@ -490,36 +486,6 @@ function openRecurringCreate() {
     document.getElementById('recurringDeleteZone').classList.add('d-none');
     document.getElementById('dayOfMonthGroup').style.display = '';
     new bootstrap.Offcanvas(document.getElementById('recurringOffcanvas')).show();
-}
-
-// Process recurring occurrence
-function processRecurringOccurrence() {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '/cashtimeline/public/transactions';
-    
-    const fields = {
-        action: 'process_recurring',
-        account_id: document.getElementById('txnAccount').value,
-        description: document.getElementById('txnDescription').value,
-        amount: document.getElementById('txnAmount').value,
-        transaction_date: document.getElementById('txnDate').value,
-        type: document.querySelector('input[name=type]:checked').value,
-        redirect: '<?= htmlspecialchars($_SERVER['REQUEST_URI'] ?? '/cashtimeline/public/dashboard') ?>'
-    };
-    
-    for (const [name, value] of Object.entries(fields)) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        input.value = value;
-        form.appendChild(input);
-    }
-    
-    if (confirm('Process this recurring occurrence and update account balance?')) {
-        document.body.appendChild(form);
-        form.submit();
-    }
 }
 
 // ── Account offcanvas ──
